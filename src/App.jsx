@@ -1,45 +1,25 @@
-import { useState } from 'react'
-import './App.css';
-import { TodoAdd } from './components/TodoAdd';
-import { TodoList } from './components/TodoList';
-import { useTodo } from './hooks/useTodo';
+import Home from './pages/Home';
+import SobreNosotros from './pages/SobreNosotros';
+import Tareas from './pages/Tareas';
+import Error from './pages/Error';
+import { Menu } from './pages/Menu';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
-	const {
-		todos,
-		todosCount,
-		pendingTodosCount,
-		handleNewTodo,
-		handleDeleteTodo,
-		handleCompleteTodo,
-		handleUpdateTodo,
-	} = useTodo();
-
-	return (
-		<>
-			<div className='card-to-do'>
-				<h1>Lista de tareas</h1>
-				<div className='counter-todos'>
-					<h3>
-						N° Tareas: <span>{todosCount}</span>
-					</h3>
-					<h3>
-						Pendientes: <span>{pendingTodosCount}</span>
-					</h3>
-				</div>
-
-				<div className='add-todo'>
-					<h3>Agregar Tarea</h3>
-					<TodoAdd handleNewTodo={handleNewTodo} />
-				</div>
-
-				<TodoList
-					todos={todos}
-					handleUpdateTodo={handleUpdateTodo}
-					handleDeleteTodo={handleDeleteTodo}
-					handleCompleteTodo={handleCompleteTodo}
-				/>
-			</div>
+    return (
+        <>
+	<BrowserRouter>
+         
+		<Menu/>
+         <Routes>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path='/sobreNosotros' element={<SobreNosotros/>}></Route>
+            <Route path='/tareas' element={<Tareas/>}></Route> 
+            <Route path='*' element={<Error/>}></Route>
+         </Routes>
+		
+     </BrowserRouter>
 		</>
 	);
 }

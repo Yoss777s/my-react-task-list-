@@ -1,0 +1,41 @@
+.root {
+    --Text: #FFFBFA;
+    --Inactive: #E6E3E8;
+    --Blue: #6f42da;    
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	background-color: rgb(70, 164, 211);
+    height: 80px;
+    width: 100%;
+
+	padding: 0 4rem;
+	box-shadow: 0px 18px 26px -3px rgb(121, 121, 121);
+}
+
+.inactive {
+    color: var(--Inactive);
+    transition: color .5s ease;
+}
+.inactive:hover {
+    color: var(--Blue);
+
+}
+
+.active {
+    font-weight: bold;
+    color: var(--Blue);
+}
+
+.nav_title::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: var(--Blue);
+    transform: scale(0, 1);
+    transform-origin: center;
+    transition: transform 25s;
+}
